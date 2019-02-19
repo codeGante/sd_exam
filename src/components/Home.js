@@ -6,15 +6,15 @@ import { withRouter } from 'react-router-dom';
 class Home extends Component {
 
     render() {
-        const {isAuthenticated} = this.props.auth;
+        const {isAuthenticated, user} = this.props.auth;
         const authHome = (
-            <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-                <h2 className="col-md-">Welcome! Add a new restaurant.</h2>
+            <div className="container row">
+                <h1 className="col-md-12">Welcome {user.name}! Add a new restaurant.</h1>
             </div>
         )
         const guestHome = (
-            <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-                <h2>Welcome! Sign in or Sign Up to start.</h2>
+            <div className="container row">
+                <h1 className="col-md-12">Welcome! Sign in or Sign Up to start.</h1>
             </div>
         )
         return(

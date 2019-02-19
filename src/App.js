@@ -6,12 +6,15 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
 
+import './styles/App.scss';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Restaurant from './components/Restaurant';
+import Error from './components/Error';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -33,11 +36,10 @@ class App extends Component {
           <div>
             <Navbar />
               <Route exact path="/" component={ Home } />
-              <div className="container"> 
                 <Route exact path="/register" component={ Register } />
                 <Route exact path="/login" component={ Login } />
                 <Route exact path="/restaurant" component={ Restaurant } />
-              </div>
+                <Route exact path="/error" component={ Error } />
             <Footer />
           </div>
         </Router>

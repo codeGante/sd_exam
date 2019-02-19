@@ -13,17 +13,14 @@ class Navbar extends Component {
     }
 
     render() {
-        const {isAuthenticated, user} = this.props.auth;
+        const {isAuthenticated} = this.props.auth;
         const authLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <Link className="nav-link" to="/restaurant">Add Restaurant</Link>
                 </li>
                 <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
-                    <img alt={JSON.stringify(user)} title={user.name}
-                        className="rounded-circle"
-                        style={{ width: '25px', marginRight: '5px'}} />
-                            Logout
+                    Logout
                 </a>
             </ul>
         )

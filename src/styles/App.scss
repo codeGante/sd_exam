@@ -1,0 +1,51 @@
+body { 
+    background: url(../resources/img/home5.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h2 {
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container{
+    background: url(../resources/img/home3.jpg) no-repeat center center fixed;     
+    background-size: cover;
+    opacity: 0.6;
+    padding: 20px;
+    margin: 35px;
+    background-position:left;
+    color: #FF0000;
+    border-left: 5px solid #FF0000; 
+}
+
+.btn {
+    background-color: #FF0000;
+    color:#ffff;
+}
+
+#error {
+    background: #00AFF9 url(https://cbwconline.com/IMG/Codepen/Unplugged.png) no-repeat center center fixed;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    padding-top: 1px;
+
+    .title {
+        margin: .8em 3rem;
+        font-size: 4em;
+        text-align: left;
+    }
+    p {
+        display: inline-block;
+        margin: .2em 3rem;
+        font-size: 2em;
+    }
+}

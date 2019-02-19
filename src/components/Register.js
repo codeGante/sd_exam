@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { registerUser } from '../actions/authentication';
+import { registerUser, registerRest } from '../actions/authentication';
 import classnames from 'classnames';
 
 class Register extends Component {
@@ -37,7 +37,6 @@ class Register extends Component {
             password: this.state.password
         }
         this.props.registerUser(user, this.props.history);
-        console.log('Register User Submit' + JSON.stringify(user));
     }
 
     componentWillReceiveProps(nextProps) {
@@ -59,35 +58,18 @@ class Register extends Component {
 
     render() {
         const { errors } = this.state;
-        // const allErrors = Object.keys(errors).map(item => {
-        //     return item;
-        // });
-
-        var error = Object.keys(errors).map(function(s){
-            return errors[s];
-        });
-
-        var errorArray = Object.keys(error).map(function(e) {
-            return error[1];
-        });
-
-        console.log('RENDER_ERRORS: ' + JSON.stringify(errors));
-        // console.log('RENDER_ERRORS_PROPS: ' + JSON.stringify(allErrors));
-        console.log('RENDER_ERROR: ' + JSON.stringify(error));
-        console.log('RENDER_ERROR_ARRAY: ' + JSON.stringify(errorArray));
         return(
-            <div className="container" style={{ marginTop: '50px', width: '700px' }}>
-                <h2 style={{marginBottom: '40px'}}>Registration</h2>
+            <div className="col-10 col-sm-8 col-md-5 col-lg-5 col-xl-6 container">
+            <h2>Registration</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                    {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                         <input type="text" placeholder="Name" name="name"
                                 className={classnames('form-control form-control-lg', {
                                     'is-invalid': errors.name
                                 })}
                                 onChange={this.handleInputChange} value={this.state.name}
                         />
-                        {/* {errors.name && (<div className="invalid-feedback">{errors.name}</div>)} */}
+                        {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                     </div>
                     <div className="form-group">
                         <input type="text" placeholder="PaternalSurname" name="paternalSurname"
@@ -114,9 +96,7 @@ class Register extends Component {
                         {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            Register User
-                        </button>
+                        <button className="btn" type="submit">Register User></button>
                     </div>
                 </form>
             </div>
@@ -126,6 +106,7 @@ class Register extends Component {
 
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
+    registerRest: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
@@ -134,4 +115,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps,{ registerUser })(withRouter(Register))
+export default connect(mapStateToProps,{ registerUser, registerRest })(withRouter(Register))

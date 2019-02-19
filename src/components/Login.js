@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/authentication';
+import { loginUser, registerRest } from '../actions/authentication';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -30,7 +30,6 @@ class Login extends Component {
             password: this.state.password
         }
         this.props.loginUser(user);
-        console.log('Login User Submit' + JSON.stringify(user));
     }
 
     componentDidMount() {
@@ -52,10 +51,9 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        console.log('RENDER_ERRORS: ' + JSON.stringify(errors));
         return(
-            <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-                <h2 style={{marginBottom: '40px'}}>Login</h2>
+            <div className="col-10 col-sm-5 col-md-5 col-lg-5 col-xl-5 container">
+                <h2>Login</h2>
                 <form onSubmit={ this.handleSubmit }>
                     <div className="form-group">
                         <input type="email" placeholder="Email" name="email"
@@ -76,17 +74,17 @@ class Login extends Component {
                         {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Login User</button>
+                        <button type="submit" className="btn" >Login User</button>
                     </div>
                 </form>
             </div>
         )
     }
-
 }
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
+    registerRest: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 }
@@ -96,4 +94,4 @@ const mapStateToProps = (state) => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { loginUser })(Login)
+export default connect(mapStateToProps, { loginUser, registerRest })(Login)
